@@ -1,5 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Generator from './Generator.jsx'
+import Generator from './containers/Generator'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducer'
 
-ReactDOM.render(<Generator/>, document.getElementById('root'));
+const store = createStore(reducer)
+
+ReactDOM.render(
+    <Provider store={store}>
+        <Generator/>
+    </Provider>,
+    document.getElementById('root'));
