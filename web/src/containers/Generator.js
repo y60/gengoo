@@ -10,6 +10,7 @@ const mapDispatchToProps = dispatch => {
     return {
         generate: () => dispatch(actions.generate()),
         changeName: (name) => dispatch(actions.changeName(name)),
+        leak:(name,gengo) => dispatch(actions.leak(name,gengo)),
     }
 }
 

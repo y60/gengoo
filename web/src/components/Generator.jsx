@@ -8,16 +8,13 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-//import firebase from 'firebase'
 
 class Generator extends Component {
     constructor(props) {
         super(props);
-        this.leak=this.leak.bind(this)
     }
     render() {
-        console.log(this.props)
-        const { classes, gengo, name, generate, changeName } = this.props;
+        const { classes, gengo, name, generate, changeName, leak } = this.props;
         return (
             <div align="center">
                 <AppBar position="static">
@@ -47,18 +44,13 @@ class Generator extends Component {
                         </Grid>
                         <Grid item>
                             <Button variant="outlined" size="small" color="primary" 
-                                onClick={this.leak} className={classes.button}>
+                                onClick={()=>leak(name,gengo)} className={classes.button}>
                                 漏洩する
                             </Button>
                         </Grid>
                     </Grid>
             </div>
         );
-    }
-
-    leak(){
-        const { gengo, name } = this.state;
-        console.log(gengo,name)
     }
 }
 
@@ -78,6 +70,7 @@ Generator.propTypes = {
     classes: PropTypes.object.isRequired,
     generate: PropTypes.func,
     changeName: PropTypes.func,
+    leak: PropTypes.func,
     gengo: PropTypes.string,
     name: PropTypes.string,
 };
