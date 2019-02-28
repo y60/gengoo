@@ -13,9 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
     "firebase": "^5.8.4",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-infinite-scroller": "^1.2.4",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1"
   },

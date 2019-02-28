@@ -1,12 +1,6 @@
+import {ref} from './../config.js'
 import firebase from 'firebase/app'
-import 'firebase/database'
-import { FIREBASE_CONFIG } from '../config';
-firebase.initializeApp(FIREBASE_CONFIG);
-const database = firebase.database();
-const ref = database.ref('gengos')
-ref.on('child_added', data => {
-    console.log(data.val())
-});
+import 'firebase/firestore'
 
 export const generate = () => {
     return { 
@@ -21,11 +15,18 @@ export const changeName = (name) => {
     };
 }
 
+export const changeDraft = (draft) => {
+    return { 
+        type: 'CHANGE_DRAFT',
+        payload: { draft: draft }
+    };
+}
+
 export const leak = (name,gengo) => {
-    var newPostRef = ref.push();
-    newPostRef.set({
+    ref.add({
         name:name,
-        gengo:gengo
+        gengo:gengo,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
     return { 
         type: 'LEAK',
